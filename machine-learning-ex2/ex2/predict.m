@@ -15,6 +15,19 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+function a = boundary(p)
+%return 1 or 0 based on input probability 
+    if p >= 0.5
+       a = 1;
+    else 
+       a = 0;
+    end
+end
+
+p = sigmoid(X * theta);
+p = arrayfun(@boundary,p);
+
+
 
 
 
