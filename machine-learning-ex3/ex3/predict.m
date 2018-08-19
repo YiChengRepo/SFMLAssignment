@@ -8,7 +8,9 @@ m = size(X, 1);
 num_labels = size(Theta2, 1);
 
 % You need to return the following variables correctly 
-p = zeros(size(X, 1), 1);
+p = zeros(m, 1);
+
+
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Complete the following code to make predictions using
@@ -21,15 +23,19 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Theta1 has size 25 x 401
+% Theta2 has size 10 x 26
 
-
-
-
-
-
-
-
+%adding bias to column 1 to input layer matrix X, 500 by 401 matrix
+RX = [ones(m ,1), X];
+%output 5000 by 25 matrix
+layer2 = sigmoid(RX * Theta1');
+%adding bias to column 1 to layer 2 matrix, preparation input for layer 3
+%output 5000 by 26 matrix
+layer2 = [ones(m, 1), layer2];
+%output 5000 by 10 matrix
+layer3 = sigmoid(layer2 * Theta2');
+[val,p] = max(layer3, [], 2);
 % =========================================================================
-
 
 end
