@@ -31,7 +31,10 @@ X = [ones(m, 1) X];
 %       
 size(X)
 size(all_theta')
-[c,i] = max(sigmoid(X * all_theta'), [], 2);
+%get a 5000*10 matrix , each row is a input image multiple with every single theta (theta for label 1-10)
+one_vs_all_matrix = sigmoid(X * all_theta')
+%get the label with biggest probility for each input/each row as the predict
+[c,i] = max(one_vs_all_matrix, [], 2);
 p = i;
 
 % =========================================================================
